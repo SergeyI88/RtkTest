@@ -27,6 +27,7 @@ public class TagUpdate extends HttpServlet {
                 customArrayList.get(i).setName(name);
                 req.setAttribute("message", "update");
                 synchronized (list) {
+                    customArrayList.set(i, new Tag(id, name));
                     getServletContext().setAttribute("list", objectMapper.writeValueAsString(customArrayList));
                 }
                 req.getRequestDispatcher("/index.jsp").forward(req, resp);

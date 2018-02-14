@@ -24,6 +24,7 @@ public class TagDelete extends HttpServlet {
         for (int i = 0; i < customArrayList.size(); i++) {
             if (customArrayList.get(i).getId().equals(id)) {
                 synchronized (list) {
+                    customArrayList.remove(i);
                     getServletContext().setAttribute("list", objectMapper.writeValueAsString(customArrayList));
                 }
                 req.setAttribute("message", "delete done");
